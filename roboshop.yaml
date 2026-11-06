@@ -53,6 +53,6 @@
       regin: us-east-1
       wait: false
     loop: "{{ instances }}"
-    when: action == delete
+    when: action == "delete"
 
 
