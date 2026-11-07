@@ -78,17 +78,12 @@
 
   - name: print cities_count
     debug:
-      var: cities_count
+      var: cities_count 
     
 
-  - name: print cities_count
-    debug:
-      msg: "{{ cities_count }}"
-    
-
-  - name: load cities data into mysql
-    shell: mysql -h "{{ mysql_host }}" -u root -p{{ mysql_root_password }} < /app/db/master-data.sql
-    when: cities_count.rc != 0 or cities_count.stdout | int == 0
+  # - name: load cities data into mysql
+  #   shell: mysql -h "{{ mysql_host }}" -u root -p{{ mysql_root_password }} < /app/db/master-data.sql
+  #   when: cities_count.rc != 0 or cities_count.stdout | int == 0
     
 
   - name: create app user in mysql
