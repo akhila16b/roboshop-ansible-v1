@@ -65,7 +65,7 @@
       record: "{{ domain_name }}"
       ttl: 1
       type: A
-    loop: "{{ instances }}"
+
     when: action == "delete"
 
   - name: delete ec2 instance
