@@ -16,7 +16,7 @@
       home: /app
       system: true
       shell: /sbin/nologin
-      command: "roboshop system user"
+      comment: "roboshop system user"
 
   - name: remove existing app directory
     file:   
