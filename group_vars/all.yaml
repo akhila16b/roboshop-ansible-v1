@@ -3,6 +3,7 @@ ansible_password: DevOps321
 mongodb_host: mongodb.ragy.online
 redis_host: redis.ragy.online
 mysql_host: mysql.ragy.online
+rabbitmq_host: rabbitmq.ragy.online
 catalogue_host: catalogue.ragy.online
 user_host: user.ragy.store
 cart_host: cart.ragy.online
