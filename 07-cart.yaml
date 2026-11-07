@@ -1,7 +1,7 @@
 - name: configure cart server
   hosts: cart
   become: yes
-- tasks:
+  tasks:
     - name: disable nodejs
       command: dnf module disable nodejs -y
 
