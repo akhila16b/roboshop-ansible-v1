@@ -743,4 +743,3 @@ results:
           wait: true
           wait_timeout: 600
       item: rabbitmq
-    skipped: false

@@ -1,0 +1,74 @@
+- name: configure user server
+  hosts: user
+  become: yes
+- tasks:
+    - name: disable nodejs
+      command: dnf module disable nodejs -y
+
+    - name: enable nodejs
+      command: dnf module enable nodejs:24 -y
+
+    - name: install nodejs
+      dnf:
+        name: nodejs
+        state: present
+
+    - name: create roboshop system user
+      user:     
+        name: roboshop
+        create_home: false
+        home: /app
+        system: true
+        shell: /sbin/nologin
+        comment: " roboshop system user"
+
+    - name: remove existing directory
+      file:
+        path: /app
+        state: absent
+    
+    - name: remove user.zip
+      file:
+        path: /tmp/user.zip
+        state: absent
+    
+    - name: create app directory
+      file: 
+        path: /app
+        state: directory
+        #we have to sepcify state directory while creating directory or else it will create file.
+
+    - name: download user application
+      get_url: 
+        url: https://raw.githubusercontent.com/daws-92s/roboshop-documentation/refs/heads/main/artifacts/user-v4.zip
+        dest: /tmp/user.zip
+
+    - name: unzip user
+      unarchive:
+      src: /tmp/user.zip
+      dest: /app
+      remote_src: yes
+
+# Ansible Controller -> Ansible server
+# remote machine -> user
+# remote_src: yes -> file already exist on remote server
+# if not -> ansible tries to unarchive the file from its server 
+
+    - name: install dependencies
+      community.general.npm:
+        path: /app
+
+    - name: copy user service
+      template:   
+        src: user.service.j2
+        dest: /etc/systemd/system/user.service
+
+    - name: daemon reload
+      systemd_service: 
+        daemon_reload: true
+
+    - name: start and enable user
+      service:
+        state: restarted
+        enabled: yes
+        
