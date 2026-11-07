@@ -45,9 +45,9 @@
 
     - name: unzip catalogue
       unarchive:
-      src: /tmp/catalogue.zip
-      dest: /app
-      remote_src: yes
+        src: /tmp/catalogue.zip
+        dest: /app
+        remote_src: yes
 
 # Ansible Controller -> Ansible server
 # remote machine -> catalogue
