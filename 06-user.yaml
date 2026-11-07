@@ -1,7 +1,7 @@
 - name: configure user server
   hosts: user
   become: yes
-- tasks:
+  tasks:
     - name: disable nodejs
       command: dnf module disable nodejs -y
 
