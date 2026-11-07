@@ -46,9 +46,9 @@
 
   - name: install dependencies in virtual environment
     ansible.builtin.pip:
-    requirements: /app/.venv/bin/pip
-    virtualenv: /app/.venv
-    virtualenv_command: python3.14 -m venv
+      requirements: /app/.venv/bin/pip
+      virtualenv: /app/.venv
+      virtualenv_command: python3.14 -m venv
 
   - name: copy payment service
     template:
