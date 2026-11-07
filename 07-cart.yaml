@@ -45,9 +45,9 @@
 
     - name: unzip cart
       unarchive:
-      src: /tmp/cart.zip
-      dest: /app
-      remote_src: yes
+        src: /tmp/cart.zip
+        dest: /app
+        remote_src: yes
 
 
     - name: install dependencies
@@ -65,6 +65,7 @@
 
     - name: start and enable cart
       service:
+        name: cart
         state: restarted
         enabled: yes
         
