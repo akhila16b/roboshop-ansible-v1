@@ -5,7 +5,7 @@
   - name: copy rabbitmq repo
     copy:
       src: rabbitmq.repo
-      path: /etc/yum.repos.d/rabbitmq.repo
+      dest: /etc/yum.repos.d/rabbitmq.repo
 
   - name: install rabbitmq server
     dnf:
