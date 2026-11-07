@@ -45,9 +45,9 @@
 
     - name: unzip user
       unarchive:
-      src: /tmp/user.zip
-      dest: /app
-      remote_src: yes
+        src: /tmp/user.zip
+        dest: /app
+        remote_src: yes
 
 # Ansible Controller -> Ansible server
 # remote machine -> user
