@@ -78,7 +78,7 @@
 
   - name: print cities_count
     debug:
-    var: cities_count
+      var: cities_count
     
 
   - name: print cities_count
